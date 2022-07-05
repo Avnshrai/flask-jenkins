@@ -28,13 +28,18 @@ pipeline {
                 }
             }
         }
-
-        stage('Test File') {
-           steps {
-                // Run venv
-                echo 'Running test'
-                // sh "docker run -d -p 5000:5000 ${img}"
-                sh "docker run -d --name project1 -p 5000:5000 ${img}"
+        stage('Unit Tests'){
+            steps{
+                sh "docker build -t ${imageName}-test -f Dockerfile.test ." 
+                sh "docker run --rm ${imageName}-test" 
+            }
+        }
+//         stage('Test File') {
+//            steps {
+//                 // Run venv
+//                 echo 'Running test'
+//                 // sh "docker run -d -p 5000:5000 ${img}"
+//                 sh "docker run -d --name project1 -p 5000:5000 ${img}"
           }
         }
 
