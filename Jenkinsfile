@@ -13,9 +13,9 @@ pipeline {
             steps {
                 git 'https://github.com/ecarmona1992/SimpleFlaskUI.git'
                 echo 'Finshed downloading git'
-                sh "sudo docker stop project1"
+                sh "docker stop project1"
                 // force stop docker and clean up images
-                sh "sudo docker system prune -af"
+                sh "docker system prune -af"
             }
         }
 
@@ -34,7 +34,7 @@ pipeline {
                 // Run venv
                 echo 'Running test'
                 // sh "docker run -d -p 5000:5000 ${img}"
-                sh "sudo docker run -d --name project1 -p 5000:5000 ${img}"
+                sh "docker run -d --name project1 -p 5000:5000 ${img}"
           }
         }
 
