@@ -39,6 +39,7 @@ pipeline {
                 // Run venv
                 echo 'Running test'
                 // sh "docker run -d -p 5000:5000 ${img}"
+                sh 'pip install -r requirements.txt'
                 sh "python3 test.py"
           }
         }
