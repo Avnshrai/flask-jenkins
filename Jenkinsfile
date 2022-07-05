@@ -28,18 +28,18 @@ pipeline {
                 }
             }
         }
-        stage('Build test Image') {
-            steps {
-                sh "docker build -f Dockerfile.test -t test ."
-            }
-        }
+//         stage('Build test Image') {
+//             steps {
+//                 sh "docker build -f Dockerfile.test -t test ."
+//             }
+//         }
 
         stage('Test File') {
            steps {
                 // Run venv
                 echo 'Running test'
                 // sh "docker run -d -p 5000:5000 ${img}"
-                sh "docker run -d --name test test"
+                sh "python3 test.py"
           }
         }
 
