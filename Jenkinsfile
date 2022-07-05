@@ -13,7 +13,7 @@ pipeline {
             steps {
                 git 'https://github.com/ecarmona1992/SimpleFlaskUI.git'
                 echo 'Finshed downloading git'
-                sh "docker stop project1"
+//                 sh "docker stop project1"
                 // force stop docker and clean up images
                 sh "docker system prune -af"
             }
