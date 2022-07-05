@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('download') {
             steps {
-                git 'https://github.com/ecarmona1992/SimpleFlaskUI.git'
+                git 'https://github.com/Avnshrai/flask-jenkins.git'
                 echo 'Finshed downloading git'
                 sh "docker stop project1"
                 // force stop docker and clean up images
