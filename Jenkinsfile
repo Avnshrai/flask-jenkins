@@ -2,7 +2,7 @@ def img
 pipeline {
     // setting up dockhub information needed to push image.
     environment {
-        registry = "ecarmona1992/project1"
+        registry = "avnshrai/project1"
         registrycredential = 'docker-hub-login'
         dockerimage = ''
     }
@@ -13,16 +13,18 @@ pipeline {
             steps {
                 git 'https://github.com/ecarmona1992/SimpleFlaskUI.git'
                 echo 'Finshed downloading git'
-//                 sh "docker stop project1"
+                sh "docker stop project1"
                 // force stop docker and clean up images
-//                 sh "docker system prune -af"
+                sh "docker system prune -af"
             }
         }
 
         stage('Build Image') {
             steps {
                 script {
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    // img = registry + ":${env.BUILD_ID}"
+                    img = registry + ":${env.BUILD_ID}"
+                    dockerImage = docker.build("${img}")
                 }
             }
         }
